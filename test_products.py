@@ -19,6 +19,9 @@ class TestProducts():
         self.driver.get("https://automationexercise.com/")
         self.driver.maximize_window()
         time.sleep(2)
+
+    def teardown_method(self):
+        self.driver.quit()
     
     def test_brand(self):
         self.driver.execute_script("window.scrollTo(0,300.79998779296875)")
