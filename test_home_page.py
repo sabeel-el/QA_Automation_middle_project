@@ -86,7 +86,7 @@ class TestHomePage():
         #next_button.click()
 
         # Optionally, wait for the carousel to change
-        time.sleep(4)
+        time.sleep(5)
 
         # Find the new active group
         new_active_group = None
@@ -98,6 +98,4 @@ class TestHomePage():
         # Verify that the active group has changed
         assert new_active_group != initial_active_group, "Carousel did not change the active group!"
 
-        # Optionally, print the text of the new active group
-        new_active_group_text = new_active_group.text
-        print("New active group content:", new_active_group_text)
+        
