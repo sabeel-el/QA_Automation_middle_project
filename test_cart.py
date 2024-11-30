@@ -37,9 +37,20 @@ class TestCart():
         assert element.is_displayed()
 
     def test_delete_item(self):
+        self.driver.execute_script("window.scrollTo(0,300)")
+        time.sleep(1)
+        first_product = self.driver.find_element(By.CSS_SELECTOR, '.col-sm-4:nth-child(4)')
+        actions = ActionChains(self.driver)
+        actions.move_to_element(first_product).perform()
+        time.sleep(3)
+        self.driver.find_element(By.CSS_SELECTOR, ".col-sm-4:nth-child(4) .product-overlay .btn").click()
+        time.sleep(1)
+        self.driver.find_element(By.CSS_SELECTOR, "u").click()
         self.driver.find_element(By.LINK_TEXT, "Cart").click()
+        element = self.driver.find_element(By.ID, "cart_info")
         self.driver.find_element(By.CSS_SELECTOR, ".cart_quantity_delete").click()
-        assert self.driver.find_element(By.CSS_SELECTOR, "b").text == "Cart is empty!"
+        time.sleep(5)
+        assert not element.is_displayed()
 
     def test_items_quantity(self):
         self.driver.find_element(By.LINK_TEXT, "View Product").click()
@@ -70,7 +81,7 @@ class TestCart():
         count = int(re.search(r'\d+', count).group())
         total=self.driver.find_element(By.CSS_SELECTOR, ".cart_total_price").text
         total = int(re.search(r'\d+', total).group())
-        assert count*single_price==total
+        assert count*single_price==total 
 
     
 
