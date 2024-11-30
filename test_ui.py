@@ -13,7 +13,7 @@ class TestUi():
     def setup_method(self):
         service=ChromeService(ChromeDriverManager().install())
         self.driver=webdriver.Chrome()
-        #driver=webdriver.Edge()
+        #self.driver=webdriver.Edge()
 
         self.driver.get("https://automationexercise.com/")
         self.driver.maximize_window()
