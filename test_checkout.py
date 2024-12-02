@@ -15,11 +15,11 @@ class TestCheckout():
         service=ChromeService(ChromeDriverManager().install())
         self.driver=webdriver.Chrome(service=service)
         #self.driver=webdriver.Edge()
-        download_folder = "C:/Users/Sabeel Elbedour/Downloads"  # Set to your Downloads folder
+        self.download_folder = "C:\\Users\\Sabeel Elbedour\\Downloads"  # Set to your Downloads folder
 
         # Set Chrome options to set download directory
         chrome_options = webdriver.ChromeOptions()
-        prefs = {"download.default_directory": download_folder,
+        prefs = {"download.default_directory": self.download_folder,
                  "download.prompt_for_download": False,  
                  "download.directory_upgrade": True,
                  "safebrowsing.enabled": True  }  
@@ -114,6 +114,7 @@ class TestCheckout():
         self.driver.find_element(By.NAME, "expiry_year").send_keys("1234")
         self.driver.find_element(By.ID, "submit").click()
         WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "b:nth-child(1)")))
+        time.sleep(5)
         assert self.driver.find_element(By.CSS_SELECTOR, "b:nth-child(1)").text=="ORDER PLACED!"
   
 
@@ -189,8 +190,7 @@ class TestCheckout():
         actions = ActionChains(self.driver)
         actions.move_to_element(download_button).click().perform()
 
-        time.sleep(9)
-        download_folder="C://Users//Sabeel Elbedour//Downloads"
-        downloaded_files=os.listdir(download_folder)
+        time.sleep(10)
+        downloaded_files=os.listdir(self.download_folder)
         file_name="invoice.txt"
         assert file_name in downloaded_files, f"Expected file {file_name} not found in download folder"
