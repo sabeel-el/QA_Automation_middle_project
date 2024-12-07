@@ -55,7 +55,7 @@ class TestRegister():
         self.driver.find_element(By.ID, "country").click()
         dropdown = self.driver.find_element(By.ID, "country")
         dropdown.find_element(By.XPATH, "//option[. = 'Israel']").click()
-        self.driver.execute_script("window.scrollTo(0, 500)") 
+        self.driver.execute_script("window.scrollTo(0, 1100)") 
         self.driver.find_element(By.ID, "state").click()
         self.driver.find_element(By.ID, "state").send_keys("athar")
         self.driver.find_element(By.ID, "city").click()
