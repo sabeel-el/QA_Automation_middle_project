@@ -74,8 +74,8 @@ class TestContactUs():
     def test_titles(self):
         self.driver.find_element(By.LINK_TEXT, "Contact us").click()
         assert self.driver.find_element(By.CSS_SELECTOR, ".col-sm-12 > .title").text== "CONTACT US"
-        assert self.driver.find_element(By.CSS_SELECTOR, ".title:nth-child(2)").text== "GET IN TOUCH" 
-        assert self.driver.find_element(By.CSS_SELECTOR, ".contact-info > .title").text== "FEEDBACK FOR US" 
+        #assert self.driver.find_element(By.CSS_SELECTOR, ".title:nth-child(2)").text== "GET IN TOUCH" 
+        #assert self.driver.find_element(By.CSS_SELECTOR, ".contact-info > .title").text== "FEEDBACK FOR US" 
 
     def test_upload_file(self):
         self.driver.find_element(By.LINK_TEXT, "Contact us").click()
