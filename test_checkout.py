@@ -89,10 +89,12 @@ class TestCheckout():
 
     def test_place_order(self):
         self.login()
-        self.driver.execute_script("window.scrollTo(0,310)")
+        self.driver.execute_script("window.scrollTo(0,500)")
         self.driver.find_element(By.LINK_TEXT, "View Product").click()
         WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".cart")))
-        self.driver.find_element(By.CSS_SELECTOR, ".cart").click()
+        add_cart= self.driver.find_element(By.CSS_SELECTOR, ".cart")
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", add_cart)
+        add_cart.click()
         time.sleep(1)
         self.driver.find_element(By.CSS_SELECTOR, "u").click()        
         time.sleep(1)
@@ -120,7 +122,7 @@ class TestCheckout():
 
     def test_address_details(self):
         self.login()
-        self.driver.execute_script("window.scrollTo(0,310)")
+        self.driver.execute_script("window.scrollTo(0,500)")
         self.driver.find_element(By.LINK_TEXT, "View Product").click()
         WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".cart")))
         self.driver.find_element(By.CSS_SELECTOR, ".cart").click()
@@ -162,7 +164,7 @@ class TestCheckout():
 
     def test_invoice_download(self):
         self.login()
-        self.driver.execute_script("window.scrollTo(0,310)")
+        self.driver.execute_script("window.scrollTo(0,500)")
         self.driver.find_element(By.LINK_TEXT, "View Product").click()
         WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".cart")))
         self.driver.find_element(By.CSS_SELECTOR, ".cart").click()
